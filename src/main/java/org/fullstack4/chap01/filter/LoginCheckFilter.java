@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Log4j2
-@WebFilter(urlPatterns = {"/bbs/*"})
+@WebFilter(urlPatterns = {"/bbs/*", "/event/*", "/member/my/*"})
 public class LoginCheckFilter implements Filter {
 
     @Override
@@ -42,13 +42,14 @@ public class LoginCheckFilter implements Filter {
                 MemberDTO dto = MemberService.INSTANCE.login(user_id, pwd);
                 //session.setAttribute("loginInfo", dto);
                 session.setAttribute("member", dto);
+                session.setAttribute("loginInfo", dto);
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        if (session.getAttribute("member") == null) {
+        if (session.getAttribute("loginInfo") == null) {
             resp.sendRedirect("/member/login");
             return;
         }
