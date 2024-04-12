@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration status="INFO">
+<!--    로그 남기는 레벨을 info 수준에 맞춰서 하겠다,,-->
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="%d{hh:mm:ss} %5p [%c] %m%n" />
+        </Console>
+    </Appenders>
+
+    <loggers>
+        <logger name="org.fullstack4" level="INFO" additibity="false">
+            <append-ref ref="CONSOLE" />
+        </logger>
+        <logger name="org.fullstack4.mapper" level="INFO" additibity="false">
+            <append-ref ref="CONSOLE" />
+        </logger>
+        <root level="INFO" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+        </root>
+    </loggers>
+</configuration>
