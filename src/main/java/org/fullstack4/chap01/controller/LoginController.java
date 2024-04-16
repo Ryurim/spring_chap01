@@ -55,6 +55,7 @@ public class LoginController extends HttpServlet {
                 if (dto != null) {
                     log.info("loginController - 로그인 성공");
                     session.setAttribute("member", dto);
+                    session.setAttribute("loginInfo", dto);
                     if (idSave.equals("Y")) {
 //                        session.setAttribute("user_id", user_id);
 //                        session.setAttribute("idS", "checked");
